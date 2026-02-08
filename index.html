@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Photo Merger Online – Combine Images Free</title>
+  <meta name="description" content="Merge photos online in seconds. Combine images side-by-side, vertically, or in a grid. Fast and private — runs in your browser." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <div class="brand">
+        <div class="brand__logo">IM</div>
+        <div>
+          <div class="brand__name">Image Merger</div>
+          <div class="brand__tag">Combine images fast • Private • Free</div>
+        </div>
+      </div>
+
+      <a class="pill" href="#how">How it works</a>
+    </div>
+  </header>
+
+  <main class="container grid">
+    <!-- LEFT: controls -->
+    <section class="panel">
+      <div class="panel__head">
+        <h1>Merge images in one click</h1>
+        <p class="muted">Upload → arrange → merge → download. Everything happens in your browser.</p>
+      </div>
+
+      <!-- Upload / Drop zone -->
+      <div class="drop" id="dropZone">
+        <div class="drop__icon">⬆️</div>
+        <div class="drop__title">Drop images here</div>
+        <div class="drop__sub">or</div>
+
+        <label class="btn btn--primary">
+          Choose Images
+          <input id="files" type="file" accept="image/*" multiple />
+        </label>
+
+        <div class="drop__hint">PNG, JPG, WEBP supported • Multiple files allowed</div>
+      </div>
+
+      <!-- Step chips -->
+      <div class="steps" id="how">
+        <div class="step"><span>1</span> Upload</div>
+        <div class="step"><span>2</span> Choose layout</div>
+        <div class="step"><span>3</span> Merge</div>
+        <div class="step"><span>4</span> Download</div>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls">
+        <div class="control">
+          <label>Layout</label>
+          <select id="layout">
+            <option value="horizontal">Horizontal (side by side)</option>
+            <option value="vertical">Vertical (top to bottom)</option>
+            <option value="grid2">Grid (2 columns)</option>
+          </select>
+        </div>
+
+        <div class="control">
+          <label>Gap</label>
+          <div class="inline">
+            <input id="gap" type="number" value="10" min="0" max="100" />
+            <span class="suffix">px</span>
+          </div>
+        </div>
+
+        <div class="control">
+          <label>Background</label>
+          <input id="bg" type="color" value="#ffffff" />
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="mergeBtn" class="btn btn--primary">Merge</button>
+        <button id="downloadBtn" class="btn btn--ghost" disabled>Download</button>
+        <button id="clearBtn" class="btn btn--danger">Clear</button>
+      </div>
+
+      <!-- Thumbnails -->
+      <div class="thumbsWrap">
+        <div class="thumbsHead">
+          <div class="thumbsTitle">Selected images</div>
+          <div class="muted small">Tip: you can reorder later (we can add drag & drop next)</div>
+        </div>
+        <div id="thumbs" class="thumbs"></div>
+      </div>
+
+      <div class="privacy">
+        <strong>Privacy:</strong> Your photos are processed in your browser. Nothing is uploaded to any server.
+      </div>
+    </section>
+
+    <!-- RIGHT: preview -->
+    <aside class="preview">
+      <div class="preview__card">
+        <div class="preview__head">
+          <h2>Preview</h2>
+          <p class="muted small">Your merged image will appear here.</p>
+        </div>
+        <div class="canvasWrap">
+          <canvas id="canvas"></canvas>
+        </div>
+      </div>
+
+      <div class="preview__card mini">
+        <h3>Quick tips</h3>
+        <ul class="list">
+          <li>Use similar-sized photos for best results.</li>
+          <li>Grid is great for 3–6 images.</li>
+          <li>Keep gap small for clean look.</li>
+        </ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="muted small">© <span id="y"></span> Image Merger</span>
+      <span class="muted small">Made by Giri</span>
+    </div>
+  </footer>
+
+  <script>
+    // just year (safe, doesn't touch your script.js logic)
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
